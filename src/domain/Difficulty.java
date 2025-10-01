@@ -1,10 +1,11 @@
-package app;
+package domain;
 
 enum Difficulty {
     EASY(10, "EASY"),
     NORMAL(20, "NORMAL"),
     HARD(30, "HARD"),
-    EXPERT(50, "EXPERT");
+    EXPERT(50, "EXPERT"),
+    HACKER(100, "HACKER");
 
     private int range;
     private String label;

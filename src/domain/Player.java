@@ -1,4 +1,4 @@
-package app;
+package domain;
 
 /**
  * Player class. Has name, points, and wins

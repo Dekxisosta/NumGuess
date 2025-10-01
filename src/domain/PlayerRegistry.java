@@ -1,6 +1,6 @@
-package app;
+package domain;
 
-class PlayerRegistry {
+public class PlayerRegistry {
     private Player[] leaderboard;
     private int leaderboardSize = 0;
     private int leaderboardCapacity = 1;
@@ -10,7 +10,7 @@ class PlayerRegistry {
 
 
 
-    PlayerRegistry(){
+    public PlayerRegistry(){
         leaderboard = new Player[leaderboardCapacity];
     }
     void addPlayer(Player player){
