@@ -14,6 +14,8 @@ public class MenuFactory {
         addExitItem(items, dispatcher);
         items.add(action("Start Game", "Starting game...", ()-> MenuTransition.mainMenu()));
         items.add(createGameModeMenu());
+        items.add(createStoreMenu());
+        items.add(createInventoryMenu());
         items.add(createSettingsMenu());
 
         return menu("Main Menu", "Displaying Main Menu... ", items);
@@ -32,6 +34,20 @@ public class MenuFactory {
         addBackItem(items);
         addEnumItems(items, ()->MenuTransition.mainMenu(), Difficulty.values());
         return menu("Game Mode Menu", "Displaying Game Mode Menu...", items);
+    }
+    /** Creates a game mode menu */
+    public Menu createStoreMenu(){
+        List<MenuItem> items = new ArrayList<>();
+        addBackItem(items);
+        addEnumItems(items, ()->MenuTransition.mainMenu(), Difficulty.values());
+        return menu("Store Menu", "Displaying Store items...", items);
+    }
+    /** Creates a game mode menu */
+    public Menu createInventoryMenu(){
+        List<MenuItem> items = new ArrayList<>();
+        addBackItem(items);
+        addEnumItems(items, ()->MenuTransition.mainMenu(), Difficulty.values());
+        return menu("Inventory", "Displaying inventory...", items);
     }
 
     /*===================================
