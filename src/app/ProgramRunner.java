@@ -1,7 +1,7 @@
 package app;
 
+import common.menu.*;
 import dispatcher.ConsoleDispatcher;
-import menu.*;
 
 class ProgramRunner {
     private boolean isRunning = true;
@@ -11,17 +11,24 @@ class ProgramRunner {
     }
 
     void run(){
-        MenuResult currentMenu = dispatcher.mainMenu();
+        dispatcher.greet();
+        Menu current = dispatcher.mainMenu();
 
         while(isRunning){
-            switch(currentMenu){
-                case MAIN_MENU: currentMenu = dispatcher.mainMenu(); break;
-                case SETTINGS_MENU: currentMenu = dispatcher.settingsMenu(); break;
+            MenuTransition transition = dispatcher.execute(current);
+            switch (transition.getType()) {
+                case MAIN_MENU:
+                    current = dispatcher.mainMenu();
+                    break;
+                case SUBMENU:
+                    current = transition.getSubmenu();
+                    break;
                 case EXIT:
-                    System.out.printf("Performed exit");
+                    System.out.println("Performed exit");
                     isRunning = false;
                     break;
             }
         }
+        dispatcher.goodbye();
     }
 }

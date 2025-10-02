@@ -4,10 +4,9 @@ package app;
  *          NUMBER GUESSING PROGRAM
  * ====================================================== */
 
-import data.*;
+import common.menu.*;
 import dispatcher.*;
 import domain.PlayerRegistry;
-import engine.*;
 import ui.console.*;
 
 import java.io.BufferedReader;
@@ -22,7 +21,8 @@ public class Main {
         ConsoleOutput output = new ConsoleOutput();
         ConsoleUI ui = new ConsoleUI(reader, output);
 
-        ConsoleDispatcher dispatcher = new ConsoleDispatcher(ui);
+        MenuFactory menuFactory = new MenuFactory();
+        ConsoleDispatcher dispatcher = new ConsoleDispatcher(ui, menuFactory);
 
         PlayerRegistry playerRegistry = new PlayerRegistry();
 //        GameEngine gameEngine = new GameEngine(playerRegistry);

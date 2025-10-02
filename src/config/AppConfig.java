@@ -26,7 +26,7 @@ public class AppConfig {
                 |_____/|_____||__|__|__.__||__|   || VOCALOID ENTHUSIAST  |
                 """;
         DATE_CREATED = "2025 / 09 / 24";
-        HEADER_COLOR = "" + Ansi.WHITE;
+        HEADER_COLOR = "" + Ansi.BRIGHT_WHITE;
     }
 
     public static AppConfig getInstance() {return INSTANCE;}

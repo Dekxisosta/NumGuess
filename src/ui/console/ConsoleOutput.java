@@ -1,8 +1,25 @@
 package ui.console;
 
 import common.Logger;
+import config.*;
 
 public class ConsoleOutput {
+    private AppConfig config = AppConfig.getInstance();
+
+    /** Prints a brief introduction with program details. */
+    public void printIntroduction() {
+        System.out.print(config.getAuthorBanner());
+        System.out.print("\nPROGRAM: " + config.getProgramName()
+                + "\nDate Created: " + config.getDateCreated()
+                + "\nCreated by: " + config.getAuthorName());
+    }
+
+    /** Prints a conclusion message. */
+    public void printConclusion() {
+        System.out.print("\n" + config.getProgramName()
+                + "\nThank you for using the program!! "
+                + "\n- Dekxi");
+    }
     public void printOptions(String[] options){
         for(int i=1;i<options.length;i++)
             System.out.printf("%n[%d] %s", i, options[i]);
@@ -11,9 +28,9 @@ public class ConsoleOutput {
     }
 
     public void printBanner(String s){
-        printBorder(s.length() + 6);
-        System.out.printf("%n{| %s |}", s);
-        printBorder(s.length() + 6);
+        printBorder(s.length() + 18);
+        System.out.printf("%n{| %-6s%s%6s |}", " ", s, " ");
+        printBorder(s.length() + 18);
     }
 
     public void printEnterPrompt(){

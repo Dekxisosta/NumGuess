@@ -1,45 +1,40 @@
 package dispatcher;
 
 import common.*;
-import menu.*;
+import common.menu.*;
 import ui.console.ConsoleUI;
 
 public class ConsoleDispatcher {
     private ConsoleUI ui;
+    private MenuFactory menuFactory;
 
-    public ConsoleDispatcher(ConsoleUI ui) {
+    public ConsoleDispatcher(ConsoleUI ui, MenuFactory menuFactory) {
         this.ui = ui;
+        this.menuFactory = menuFactory;
     }
 
-    public MenuResult mainMenu(){
-        Menu menu = new Menu(new MenuOption[]{
-                new MenuOption("Quit", ()->{
-                    if (promptTermination()) return MenuResult.EXIT;
-                    else return MenuResult.MAIN_MENU;
-                }),
-                new MenuOption("Start Game", ()-> MenuResult.MAIN_MENU),
-                new MenuOption("Select Game Mode", ()-> MenuResult.MAIN_MENU),
-                new MenuOption("Settings", ()-> MenuResult.SETTINGS_MENU),
-        });
-        return handleChoice("Main Menu", menu);
+    public void greet(){
+        ui.showIntroduction();
+        ui.showLineBreak();
     }
-    public MenuResult settingsMenu(){
-        Menu menu = new Menu(new MenuOption[]{
-                new MenuOption("Back", ()-> MenuResult.MAIN_MENU)
-        });
-        return handleChoice("Settings", menu);
+    public void goodbye(){
+        ui.showLineBreak();
+        ui.showConclusion();
     }
 
-    /* ===================
-     * UTILITY METHODS
-     ===================*/
-    private MenuResult handleChoice(String title, Menu menu){
-        int choice = ui.showMenuAndGetChoice(title, menu.getOptionNames());
-        return menu.get(choice).execute();
+    public Menu mainMenu(){
+        return menuFactory.createMainMenu(this);
     }
-    private boolean promptTermination(){
+    public boolean promptTermination(){
+        ui.showLineBreak();
         ui.showMessage("Quit program? (y/n)", Logger.SYSTEM);
         return ui.getBoolean();
     }
+    public MenuTransition execute(Menu menu){
+        int choice = ui.showMenuAndGetChoice(menu.getLabel(), menu.getOptionNames());
+        MenuItem option = menu.getMenuItem(choice);
 
+        ui.showMessage(option.getSystemNotification(), Logger.SYSTEM);
+        return option.execute();
+    }
 }

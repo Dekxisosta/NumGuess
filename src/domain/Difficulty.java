@@ -1,6 +1,6 @@
 package domain;
 
-enum Difficulty {
+public enum Difficulty {
     EASY(10, "EASY"),
     NORMAL(20, "NORMAL"),
     HARD(30, "HARD"),

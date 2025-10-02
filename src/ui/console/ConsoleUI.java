@@ -15,7 +15,12 @@ public class ConsoleUI {
         this.reader = reader;
         this.output = output;
     }
-
+    public void showIntroduction(){
+        output.printIntroduction();
+    }
+    public void showConclusion(){
+        output.printConclusion();
+    }
     public int showMenuAndGetChoice(String title, String[] options){
         showBanner(title);
         showOptions(options);
@@ -32,6 +37,7 @@ public class ConsoleUI {
                 return reader.readBoolean();
             }catch(Exception e){
                 showMessage(e.getMessage(), Logger.ERROR);
+                showEnterPrompt();
             }
         }
     }
@@ -42,6 +48,7 @@ public class ConsoleUI {
                 return reader.readInt();
             } catch (Exception e) {
                 showMessage(e.getMessage(), Logger.ERROR);
+                showEnterPrompt();
             }
         }
     }
@@ -52,6 +59,7 @@ public class ConsoleUI {
                 return reader.readIntWithRange(min, max);
             } catch (Exception e) {
                 showMessage(e.getMessage(), Logger.ERROR);
+                showEnterPrompt();
             }
         }
     }
@@ -62,6 +70,7 @@ public class ConsoleUI {
                 return reader.readString();
             } catch (Exception e) {
                 showMessage(e.getMessage(), Logger.ERROR);
+                showEnterPrompt();
             }
         }
     }
@@ -97,7 +106,7 @@ public class ConsoleUI {
         output.printMessage(text, type);
     }
 
-    public void showLineBreaks() {
+    public void showLineBreak() {
         output.printLineBreak();
     }
 }
