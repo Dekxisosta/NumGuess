@@ -1,6 +1,6 @@
 package config;
 
-import common.*;
+import common.util.*;
 
 /**
  * Singleton Application-level configuration class.

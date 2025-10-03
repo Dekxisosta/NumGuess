@@ -1,4 +1,4 @@
-package common.menu;
+package menu.api;
 
 public class MenuTransition {
 

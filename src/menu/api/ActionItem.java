@@ -1,4 +1,4 @@
-package common.menu;
+package menu.api;
 import java.util.function.Supplier;
 
 public class ActionItem implements MenuItem {

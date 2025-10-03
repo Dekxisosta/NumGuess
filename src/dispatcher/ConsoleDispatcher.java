@@ -1,14 +1,15 @@
 package dispatcher;
 
-import common.*;
-import common.menu.*;
+import common.logging.*;
+import menu.api.*;
+import menu.factory.app.*;
 import ui.console.ConsoleUI;
 
 public class ConsoleDispatcher {
     private ConsoleUI ui;
-    private MenuFactory menuFactory;
+    private MainMenuFactory menuFactory;
 
-    public ConsoleDispatcher(ConsoleUI ui, MenuFactory menuFactory) {
+    public ConsoleDispatcher(ConsoleUI ui, MainMenuFactory menuFactory) {
         this.ui = ui;
         this.menuFactory = menuFactory;
     }

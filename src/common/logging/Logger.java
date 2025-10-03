@@ -1,5 +1,6 @@
-package common;
+package common.logging;
 
+import common.util.*;
 import config.AppConfig;
 /* ========================================
  *        CONSOLE LOG ENUM

@@ -1,6 +1,6 @@
 package ui.console;
 
-import common.Logger;
+import common.logging.Logger;
 import config.*;
 
 public class ConsoleOutput {

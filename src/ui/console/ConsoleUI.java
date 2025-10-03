@@ -1,12 +1,13 @@
 package ui.console;
 
-import common.Logger;
+import common.logging.Logger;
+import ui.*;
 
 /**
  * High-level UI facade for console interaction.
  * Delegates input to ConsoleReader and output to ConsoleOutput.
  */
-public class ConsoleUI {
+public class ConsoleUI implements UI {
 
     private final ConsoleReader reader;
     private final ConsoleOutput output;

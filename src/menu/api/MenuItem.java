@@ -1,4 +1,4 @@
-package common.menu;
+package menu.api;
 
 public interface MenuItem {
     String getLabel();

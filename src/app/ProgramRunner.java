@@ -1,7 +1,7 @@
 package app;
 
-import common.menu.*;
 import dispatcher.ConsoleDispatcher;
+import menu.api.*;
 
 class ProgramRunner {
     private boolean isRunning = true;
