@@ -2,10 +2,6 @@ package common.util;
 
 import config.AppConfig;
 
-/**
- * Utility class for colored console outputs
- * for better readability and formatting
- */
 public enum Ansi {
     RESET("\u001B[0m"),
     BOLD("\u001B[1m"),
@@ -20,23 +16,15 @@ public enum Ansi {
     private AppConfig config = AppConfig.getInstance();
     private String code;
 
-    /**
-     * Ansi class constructor
-     * @param code ansiCode for the corresponding constant's color
-     */
     Ansi(String code){
         this.code = code;
     }
 
-    /** @return ansiCode on Ansi class constant call*/
     @Override
     public String toString() {
         return code;
     }
-    /**
-     * Wraps text with corresponding constant's code. Auto reset
-     * @param text the text to be wrapped
-     */
+
     public String wrap(String text){
         return (config.isANSISupported()) ? code + text + RESET: text;
     }

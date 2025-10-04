@@ -1,11 +1,12 @@
-package dispatcher;
+package dispatcher.console;
 
 import common.logging.*;
+import dispatcher.api.Dispatcher;
 import menu.api.*;
 import menu.factory.app.*;
 import ui.console.ConsoleUI;
 
-public class ConsoleDispatcher {
+public class ConsoleDispatcher implements Dispatcher {
     private ConsoleUI ui;
     private MainMenuFactory menuFactory;
 
@@ -24,7 +25,7 @@ public class ConsoleDispatcher {
     }
 
     public Menu mainMenu(){
-        return menuFactory.createMainMenu(this);
+        return menuFactory.create();
     }
     public boolean promptTermination(){
         ui.showLineBreak();

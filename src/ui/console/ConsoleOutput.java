@@ -6,30 +6,37 @@ import config.*;
 public class ConsoleOutput {
     private AppConfig config = AppConfig.getInstance();
 
-    /** Prints a brief introduction with program details. */
     public void printIntroduction() {
         System.out.print(config.getAuthorBanner());
-        System.out.print("\nPROGRAM: " + config.getProgramName()
-                + "\nDate Created: " + config.getDateCreated()
-                + "\nCreated by: " + config.getAuthorName());
+        System.out.printf("""
+                PROGRAM: %s
+                Date Created: %s
+                Created by: %s
+                """,
+                config.getProgramName(),
+                config.getDateCreated(),
+                config.getAuthorName());
     }
 
-    /** Prints a conclusion message. */
     public void printConclusion() {
-        System.out.print("\n" + config.getProgramName()
-                + "\nThank you for using the program!! "
-                + "\n- Dekxi");
+        System.out.printf("""
+                %s
+                Thank you for using the program!!
+                - %s
+                """,
+                config.getProgramName(),
+                config.getDateCreated(),
+                config.getAuthorName());
     }
     public void printOptions(String[] options){
         for(int i=1;i<options.length;i++)
             System.out.printf("%n[%d] %s", i, options[i]);
-
         System.out.printf("%n[%d] %s", 0, options[0]);
     }
 
     public void printBanner(String s){
         printBorder(s.length() + 18);
-        System.out.printf("%n{| %-6s%s%6s |}", " ", s, " ");
+        System.out.printf("%n{| %-6s%s%6s |}", "", s, "");
         printBorder(s.length() + 18);
     }
 

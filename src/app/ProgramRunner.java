@@ -1,6 +1,6 @@
 package app;
 
-import dispatcher.ConsoleDispatcher;
+import dispatcher.console.ConsoleDispatcher;
 import menu.api.*;
 
 class ProgramRunner {

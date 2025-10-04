@@ -1,21 +1,18 @@
 package app.setup;
 
+import ui.api.UI;
 import ui.console.*;
 
 import java.io.*;
 
 public class UIConfig {
-    private ConsoleReader reader;
-    private ConsoleOutput output;
-    private ConsoleUI ui;
+    private UI ui;
 
     public UIConfig(){
-        ConsoleReader reader = new ConsoleReader(new BufferedReader(new InputStreamReader(System.in)));
-        ConsoleOutput output = new ConsoleOutput();
-        ConsoleUI ui = new ConsoleUI(reader, output);
+        ui = new ConsoleUI(
+                new ConsoleReader(new BufferedReader(new InputStreamReader(System.in))),
+                new ConsoleOutput());
     }
 
-    public ConsoleReader getReader(){return reader;}
-    public ConsoleOutput getOutput(){return output;}
-    public ConsoleUI getUI(){return ui;}
+    public UI getUI(){return ui;}
 }

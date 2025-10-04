@@ -1,4 +1,5 @@
-package menu.factory.app.game;
+package menu.factory.app.player;
 
 public class PlayerMenuFactory {
+
 }

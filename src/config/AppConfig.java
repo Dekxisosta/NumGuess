@@ -2,9 +2,6 @@ package config;
 
 import common.util.*;
 
-/**
- * Singleton Application-level configuration class.
- */
 public class AppConfig {
     private static String PROGRAM_NAME;
     private static String AUTHOR_NAME;

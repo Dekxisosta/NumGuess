@@ -1,69 +1,46 @@
 package menu.factory.app;
 
-import dispatcher.*;
-import domain.*;
-import engine.*;
+import dispatcher.console.ConsoleDispatcher;
 import menu.api.*;
+import menu.factory.app.game.GameModeMenuFactory;
+import menu.factory.app.game.StoreMenuFactory;
+import menu.factory.app.player.InventoryMenuFactory;
+import menu.factory.app.player.PlayerMenuFactory;
 
 import java.util.*;
-import java.util.function.*;
 
-public class MainMenuFactory {
-    private GameEngine gameEngine;
+public class MainMenuFactory extends MenuFactory{
+    private ConsoleDispatcher dispatcher;
+    private UtilityMenuFactory utilityMenu;
+    private GameModeMenuFactory gameModeMenu;
+    private StoreMenuFactory storeMenu;
+    private InventoryMenuFactory inventoryMenu;
+    private PlayerMenuFactory playerMenu;
 
-
-    public MainMenuFactory(GameEngine gameEngine){
-       this.gameEngine = gameEngine;
+    public MainMenuFactory(ConsoleDispatcher dispatcher,
+                           UtilityMenuFactory utilityMenu,
+                           GameModeMenuFactory gameModeMenu,
+                           StoreMenuFactory storeMenu,
+                           InventoryMenuFactory inventoryMenu,
+                           PlayerMenuFactory playerMenu) {
+        this.dispatcher = dispatcher;
+        this.utilityMenu = utilityMenu;
+        this.gameModeMenu = gameModeMenu;
+        this.storeMenu = storeMenu;
+        this.inventoryMenu = inventoryMenu;
+        this.playerMenu = playerMenu;
     }
 
-    /** Creates a main menu / root menu */
-    public Menu createMainMenu(ConsoleDispatcher dispatcher){
+    @Override
+    public Menu create(){
         List<MenuItem> items = new ArrayList<>();
         addExitItem(items, dispatcher);
-        items.add(action("Start Game", "Starting game...", ()-> {
-            System.out.println(gameEngine.getDifficulty().name());
-            return MenuTransition.mainMenu();
-        }));
-        items.add(createGameModeMenu());
-        items.add(createStoreMenu());
-        items.add(createInventoryMenu());
-        items.add(createSettingsMenu());
+        items.add(action("Start Game", "Starting game...", ()-> MenuTransition.mainMenu()));
+        items.add(gameModeMenu.create());
+        items.add(storeMenu.create());
+        items.add(inventoryMenu.create());
+        items.add(utilityMenu.create());
 
         return menu("Main Menu", "Displaying Main Menu... ", items);
     }
-
-    /** Creates a settings menu */
-    public Menu createSettingsMenu(){
-        List<MenuItem> items = new ArrayList<>();
-        addBackItem(items);
-        return menu("Settings Menu", "Displaying Settings Menu...", items);
-    }
-
-
-    /** Creates a game mode menu */
-    public Menu createStoreMenu(){
-        List<MenuItem> items = new ArrayList<>();
-        addBackItem(items);
-        addEnumItems(items, ()->MenuTransition.mainMenu(), Difficulty.values());
-        return menu("Buy Cosmetics!", "Displaying Store items...", items);
-    }
-    /** Creates a game mode menu */
-    public Menu createInventoryMenu(){
-        List<MenuItem> items = new ArrayList<>();
-        addBackItem(items);
-        addEnumItems(items, ()->MenuTransition.mainMenu(), Difficulty.values());
-        return menu("Inventory", "Displaying inventory...", items);
-    }
-
-    /*===================================
-     *  UTILITY METHODS
-     ==================================*/
-    private void addGameModes(List<MenuItem> items, Difficulty... modes){
-        for (Difficulty mode : modes)
-            items.add(action(mode.name(), "Selected " + mode.name() + "!", ()->{
-                gameEngine.setDifficulty(mode);
-                return MenuTransition.mainMenu();
-            }));
-    }
-
 }

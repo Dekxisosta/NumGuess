@@ -1,12 +1,10 @@
 package ui.console;
 
 import common.logging.Logger;
-import ui.*;
+import ui.api.UI;
 
-/**
- * High-level UI facade for console interaction.
- * Delegates input to ConsoleReader and output to ConsoleOutput.
- */
+import java.util.function.Supplier;
+
 public class ConsoleUI implements UI {
 
     private final ConsoleReader reader;
@@ -32,82 +30,44 @@ public class ConsoleUI implements UI {
     // ========================
     // INPUT DELEGATES
     // ========================
-    public boolean getBoolean() {
-        while(true){
-            try{
-                return reader.readBoolean();
-            }catch(Exception e){
-                showMessage(e.getMessage(), Logger.ERROR);
-                showEnterPrompt();
-            }
-        }
-    }
+    public boolean getBoolean() {return getWrapper(reader::readBoolean);}
 
-    public int getInt() {
-        while(true) {
-            try {
-                return reader.readInt();
-            } catch (Exception e) {
-                showMessage(e.getMessage(), Logger.ERROR);
-                showEnterPrompt();
-            }
-        }
-    }
+    public int getInt() {return getWrapper(reader::readInt);}
 
-    public int getIntWithRange(int min, int max) {
-        while(true) {
-            try {
-                return reader.readIntWithRange(min, max);
-            } catch (Exception e) {
-                showMessage(e.getMessage(), Logger.ERROR);
-                showEnterPrompt();
-            }
-        }
-    }
+    public int getIntWithRange(int min, int max) {return getWrapper(()->reader.readIntWithRange(min, max));}
 
-    public String getString() {
-        while(true) {
-            try {
-                return reader.readString();
-            } catch (Exception e) {
-                showMessage(e.getMessage(), Logger.ERROR);
-                showEnterPrompt();
-            }
-        }
-    }
+    public String getString() {return getWrapper(reader::readString);}
 
-    public void close() {
-        reader.close();
-    }
+    public void close() {reader.close();}
 
     // ========================
     // OUTPUT DELEGATES
     // ========================
-    public void showOptions(String[] options) {
-        output.printOptions(options);
-    }
+    public void showOptions(String[] options) {output.printOptions(options);}
 
-    public void showBanner(String text) {
-        output.printBanner(text);
-    }
+    public void showBanner(String text) {output.printBanner(text);}
 
-    public void showEnterPrompt() {
-        output.printEnterPrompt();
-    }
+    public void showEnterPrompt() {output.printEnterPrompt();}
 
-    public void showEnterPrompt(String type) {
-        output.printEnterPrompt(type);
-    }
+    public void showEnterPrompt(String type) {output.printEnterPrompt(type);}
 
-    public void showBorder(int length) {
-        output.printBorder(length);
-    }
+    public void showBorder(int length) {output.printBorder(length);}
 
-    public void showMessage(String text, Logger type) {
-        output.printMessage(text, type);
-    }
+    public void showMessage(String text, Logger type) {output.printMessage(text, type);}
 
-    public void showLineBreak() {
-        output.printLineBreak();
+    public void showLineBreak() {output.printLineBreak();}
+
+    // ========================
+    // UTILITY FUNCTIONS
+    // ========================
+    private <T> T getWrapper(Supplier<T> getter){
+        while(true) {
+            try {
+                return getter.get();
+            } catch (Exception e) {
+                showMessage(e.getMessage(), Logger.ERROR);
+                showEnterPrompt();
+            }
+        }
     }
 }

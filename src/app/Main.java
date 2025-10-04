@@ -18,18 +18,6 @@ import java.io.InputStreamReader;
  */
 public class Main {
     public static void main(String[] args) {
-        MainMenuFactory menuFactory = new MainMenuFactory(engineConfig.getEngine());
-        ConsoleDispatcher dispatcher = new ConsoleDispatcher(uiConfig.getUI(), menuFactory);
 
-        PlayerRegistry playerRegistry = new PlayerRegistry();
-//        GameEngine gameEngine = new GameEngine(playerRegistry);
-
-        ProgramRunner runner = new ProgramRunner(dispatcher);
-
-        try {
-            runner.run();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
