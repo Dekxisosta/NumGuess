@@ -1,5 +1,6 @@
 package menu.factory.app;
 
+import dispatcher.api.*;
 import dispatcher.console.ConsoleDispatcher;
 import menu.api.*;
 import menu.factory.app.game.GameModeMenuFactory;
@@ -10,14 +11,14 @@ import menu.factory.app.player.PlayerMenuFactory;
 import java.util.*;
 
 public class MainMenuFactory extends MenuFactory{
-    private ConsoleDispatcher dispatcher;
+    private Dispatcher dispatcher;
     private UtilityMenuFactory utilityMenu;
     private GameModeMenuFactory gameModeMenu;
     private StoreMenuFactory storeMenu;
     private InventoryMenuFactory inventoryMenu;
     private PlayerMenuFactory playerMenu;
 
-    public MainMenuFactory(ConsoleDispatcher dispatcher,
+    public MainMenuFactory(Dispatcher dispatcher,
                            UtilityMenuFactory utilityMenu,
                            GameModeMenuFactory gameModeMenu,
                            StoreMenuFactory storeMenu,

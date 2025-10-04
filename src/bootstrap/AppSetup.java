@@ -1,4 +1,4 @@
-package app.setup;
+package bootstrap;
 
 public class AppSetup {
     AppSetup(){}

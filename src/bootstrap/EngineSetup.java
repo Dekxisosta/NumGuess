@@ -1,13 +1,11 @@
-package app.setup;
+package bootstrap;
 
 import engine.*;
 
-public class EngineConfig {
+public class EngineSetup {
     private GameEngine engine;
-
-    public EngineConfig(){
+    public EngineSetup(){
         GameEngine engine = new GameEngine();
     }
-
     public GameEngine getEngine(){return engine;}
 }
