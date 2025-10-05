@@ -1,6 +1,4 @@
-package engine;
-
-import domain.*;
+package core;
 
 public class GameEngine {
     private GameState gameState;

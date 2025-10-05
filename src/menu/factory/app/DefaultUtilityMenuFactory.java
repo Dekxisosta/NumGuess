@@ -1,13 +1,11 @@
-package menu.factory.app.game;
+package menu.factory.app;
 
-import menu.api.Menu;
-import menu.api.MenuFactory;
-import menu.api.MenuItem;
+import menu.api.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StoreMenuFactory extends MenuFactory {
+public class DefaultUtilityMenuFactory extends UtilityMenuFactory {
     public Menu create(){
         List<MenuItem> items = new ArrayList<>();
         addBackItem(items);

@@ -1,8 +1,6 @@
 package menu.api;
 
 public class MenuTransition {
-
-
     public enum Type {
         MAIN_MENU,
         SUBMENU,

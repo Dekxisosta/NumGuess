@@ -8,9 +8,9 @@ import java.util.function.Supplier;
 public class ConsoleUI implements UI {
 
     private final ConsoleReader reader;
-    private final ConsoleOutput output;
+    private final ConsoleRenderer output;
 
-    public ConsoleUI(ConsoleReader reader, ConsoleOutput output) {
+    public ConsoleUI(ConsoleReader reader, ConsoleRenderer output) {
         this.reader = reader;
         this.output = output;
     }

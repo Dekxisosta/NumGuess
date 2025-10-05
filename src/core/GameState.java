@@ -1,4 +1,4 @@
-package domain;
+package core;
 
 public class GameState {
     private Difficulty difficulty;

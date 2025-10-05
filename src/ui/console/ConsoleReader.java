@@ -1,9 +1,11 @@
 package ui.console;
 
+import ui.api.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class ConsoleReader{
+public class ConsoleReader implements InputReader {
     private BufferedReader reader;
 
     public ConsoleReader(BufferedReader reader){

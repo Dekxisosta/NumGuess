@@ -2,8 +2,9 @@ package ui.console;
 
 import common.logging.Logger;
 import config.*;
+import ui.api.*;
 
-public class ConsoleOutput {
+public class ConsoleRenderer implements OutputRenderer {
     private AppConfig config = AppConfig.getInstance();
 
     public void printIntroduction() {

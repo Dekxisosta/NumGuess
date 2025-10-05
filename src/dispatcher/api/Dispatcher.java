@@ -6,7 +6,6 @@ import menu.api.MenuTransition;
 public interface Dispatcher {
     void greet();
     void goodbye();
-    Menu mainMenu();
     boolean promptTermination();
     MenuTransition execute(Menu menu);
 }

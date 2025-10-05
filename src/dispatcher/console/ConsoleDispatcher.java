@@ -4,15 +4,14 @@ import common.logging.*;
 import dispatcher.api.Dispatcher;
 import menu.api.*;
 import menu.factory.app.*;
+import ui.api.*;
 import ui.console.ConsoleUI;
 
 public class ConsoleDispatcher implements Dispatcher {
-    private ConsoleUI ui;
-    private MainMenuFactory mainMenu;
+    private UI ui;
 
-    public ConsoleDispatcher(ConsoleUI ui, MainMenuFactory mainMenu) {
+    public ConsoleDispatcher(UI ui) {
         this.ui = ui;
-        this.mainMenu = mainMenu;
     }
 
     public void greet(){
@@ -23,10 +22,6 @@ public class ConsoleDispatcher implements Dispatcher {
     public void goodbye(){
         ui.showLineBreak();
         ui.showConclusion();
-    }
-
-    public Menu mainMenu(){
-        return mainMenu.create();
     }
 
     public boolean promptTermination(){

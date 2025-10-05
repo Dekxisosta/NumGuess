@@ -1,4 +1,4 @@
-package domain;
+package core;
 
 /**
  * Player class. Has name, points, and wins

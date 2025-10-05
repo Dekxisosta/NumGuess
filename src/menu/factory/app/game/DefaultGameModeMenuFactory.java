@@ -1,15 +1,15 @@
 package menu.factory.app.game;
 
-import domain.*;
-import engine.GameEngine;
+import core.*;
+import core.GameEngine;
 import menu.api.*;
 
 import java.util.List;
 import java.util.ArrayList;
 
-public class GameModeMenuFactory extends MenuFactory {
+public class DefaultGameModeMenuFactory extends GameModeMenuFactory {
     private GameEngine gameEngine;
-    public GameModeMenuFactory(GameEngine gameEngine) {
+    public DefaultGameModeMenuFactory(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
     }
 

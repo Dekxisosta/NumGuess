@@ -1,4 +1,4 @@
-package domain;
+package core;
 
 public class PlayerRegistry {
     private Player[] leaderboard;

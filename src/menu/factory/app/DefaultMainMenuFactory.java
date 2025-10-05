@@ -1,16 +1,15 @@
 package menu.factory.app;
 
 import dispatcher.api.*;
-import dispatcher.console.ConsoleDispatcher;
 import menu.api.*;
-import menu.factory.app.game.GameModeMenuFactory;
-import menu.factory.app.game.StoreMenuFactory;
-import menu.factory.app.player.InventoryMenuFactory;
-import menu.factory.app.player.PlayerMenuFactory;
+import menu.factory.app.game.DefaultGameModeMenuFactory;
+import menu.factory.app.game.DefaultStoreMenuFactory;
+import menu.factory.app.player.DefaultInventoryMenuFactory;
+import menu.factory.app.player.DefaultPlayerMenuFactory;
 
 import java.util.*;
 
-public class MainMenuFactory extends MenuFactory{
+public class DefaultMainMenuFactory extends MainMenuFactory{
     private Dispatcher dispatcher;
     private UtilityMenuFactory utilityMenu;
     private GameModeMenuFactory gameModeMenu;
@@ -18,12 +17,12 @@ public class MainMenuFactory extends MenuFactory{
     private InventoryMenuFactory inventoryMenu;
     private PlayerMenuFactory playerMenu;
 
-    public MainMenuFactory(Dispatcher dispatcher,
-                           UtilityMenuFactory utilityMenu,
-                           GameModeMenuFactory gameModeMenu,
-                           StoreMenuFactory storeMenu,
-                           InventoryMenuFactory inventoryMenu,
-                           PlayerMenuFactory playerMenu) {
+    public DefaultMainMenuFactory(Dispatcher dispatcher,
+                                  UtilityMenuFactory utilityMenu,
+                                  GameModeMenuFactory gameModeMenu,
+                                  StoreMenuFactory storeMenu,
+                                  InventoryMenuFactory inventoryMenu,
+                                  PlayerMenuFactory playerMenu) {
         this.dispatcher = dispatcher;
         this.utilityMenu = utilityMenu;
         this.gameModeMenu = gameModeMenu;
